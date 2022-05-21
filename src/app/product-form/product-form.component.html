@@ -1,4 +1,4 @@
-<h3>Create a product</h3>
+<h3>Crear Producto</h3>
 
 <form clrForm *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="addProduct()">
   <clr-input-container>
@@ -40,6 +40,6 @@
     <clr-control-error>Debes especificar el stock del producto mayor o igual a cero</clr-control-error>
   </clr-input-container>
 
-  <button class="btn btn-primary" type="submit">Enviar</button>
+  <button class="btn btn-primary" type="submit">Guardar</button>
   <button class="btn" type="button" (click)="formClose.emit()">Cerrar</button>
 </form>

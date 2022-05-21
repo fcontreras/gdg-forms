@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="content-container">
     <div class="content-area">
-      <button *ngIf="showProductList" class="btn btn-primary" (click)="showProductList = false">Add Product</button>
+      <button *ngIf="showProductList" class="btn btn-primary" (click)="showProductList = false">Agregar Producto</button>
       <ng-container *ngIf="showProductList; then productsList; else productForm"></ng-container>
     </div>
   </div>

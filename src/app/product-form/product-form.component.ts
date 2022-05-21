@@ -20,6 +20,7 @@ export class ProductFormComponent implements OnInit {
     this.productForm = this.builder.group({
       name: ['', [Validators.required, this.validateNotEmpty]],
       description: ['', Validators.required],
+      category: ['', Validators.required],
       stock: ['', Validators.required],
     })
   }

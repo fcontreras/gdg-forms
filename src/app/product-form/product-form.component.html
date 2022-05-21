@@ -13,6 +13,15 @@
     <clr-control-error>La descripción es requerida</clr-control-error>
   </clr-textarea-container>
 
+  <clr-select-container>
+    <label>Categoria</label>
+    <select clrSelect formControlName="category">
+      <option value="electronics">Electronicos</option>
+      <option value="clothes">Ropa</option>
+    </select>
+    <clr-control-error>Por favor selecciona una categoría de la lista</clr-control-error>
+  </clr-select-container>
+
   <clr-input-container>
     <label>Stock</label>
     <input clrInput formControlName="stock" type="number" min="0" max="9999999"/>

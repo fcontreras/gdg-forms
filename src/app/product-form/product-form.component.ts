@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProductsService} from "../products.service";
+import {Product} from "../product";
+import {debounceTime} from "rxjs/operators";
 
 @Component({
   selector: 'app-product-form',
@@ -14,6 +16,8 @@ export class ProductFormComponent implements OnInit {
 
   productForm: FormGroup | undefined;
 
+  suggestions: Product[] = [];
+
   constructor(private builder: FormBuilder, private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -22,6 +26,13 @@ export class ProductFormComponent implements OnInit {
       description: ['', Validators.required],
       category: ['', Validators.required],
       stock: ['', Validators.required],
+    });
+
+    this.productForm.controls.name.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((name: string) => {
+      console.log('Sugerencias actualizadas');
+      this.suggestions = this.productService.getSuggestions(name);
     })
   }
 

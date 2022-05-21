@@ -19,4 +19,13 @@ export class ProductsService {
     product.id = this.products.length + 1;
     this.products.push(product);
   }
+
+
+  getSuggestions(name: string): Product[] {
+    if (name.length > 2) {
+      return this.products.filter(product => product.name.indexOf(name) !== -1);
+    }
+
+    return  [];
+  }
 }

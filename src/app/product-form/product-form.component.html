@@ -6,6 +6,18 @@
     <input clrInput formControlName="name" />
     <clr-control-error>El nombre es requerido</clr-control-error>
   </clr-input-container>
+  <div class="clr-row" *ngIf="suggestions.length">
+    <div class="clr-col-log-2"></div>
+    <div class="clr-col-log-6">
+      <clr-stack-view>
+        <clr-stack-header>Productos Similares</clr-stack-header>
+        <clr-stack-block *ngFor="let p of suggestions">
+          <clr-stack-label>#{{p.id}}: {{p.name}}</clr-stack-label>
+          <clr-stack-content>{{p.description}}</clr-stack-content>
+        </clr-stack-block>
+      </clr-stack-view>
+    </div>
+  </div>
 
   <clr-textarea-container>
     <label>Descripción</label>

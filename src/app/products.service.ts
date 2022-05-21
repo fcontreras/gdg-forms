@@ -14,4 +14,9 @@ export class ProductsService {
   getProductsInStock(): Product[] {
     return this.products.filter( p => p.stock > 0)
   }
+
+  createProduct(product: Product) {
+    product.id = this.products.length + 1;
+    this.products.push(product);
+  }
 }

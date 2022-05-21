@@ -1,7 +1,17 @@
 <div class="main-container">
   <div class="content-container">
     <div class="content-area">
-      <app-products-list></app-products-list>
+      <button *ngIf="showProductList" class="btn btn-primary" (click)="showProductList = false">Add Product</button>
+      <ng-container *ngIf="showProductList; then productsList; else productForm"></ng-container>
     </div>
   </div>
 </div>
+
+
+<ng-template #productsList>
+  <app-products-list></app-products-list>
+</ng-template>
+
+<ng-template #productForm>
+  <app-product-form (formClose)="onFormClose()"></app-product-form>
+</ng-template>

@@ -1,0 +1,24 @@
+<h3>Create a product</h3>
+
+<form clrForm *ngIf="productForm" [formGroup]="productForm" (ngSubmit)="addProduct()">
+  <clr-input-container>
+    <label>Nombre</label>
+    <input clrInput formControlName="name" />
+    <clr-control-error>El nombre es requerido</clr-control-error>
+  </clr-input-container>
+
+  <clr-textarea-container>
+    <label>Descripción</label>
+    <textarea clrTextarea formControlName="description"></textarea>
+    <clr-control-error>La descripción es requerida</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-input-container>
+    <label>Stock</label>
+    <input clrInput formControlName="stock" type="number"/>
+    <clr-control-error>Debes especificar el stock del producto</clr-control-error>
+  </clr-input-container>
+
+  <button class="btn btn-primary" type="submit">Enviar</button>
+  <button class="btn" type="button" (click)="formClose.emit()">Cerrar</button>
+</form>

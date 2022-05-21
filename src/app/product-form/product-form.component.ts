@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProductsService} from "../products.service";
 
 @Component({
@@ -18,7 +18,7 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.builder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, this.validateNotEmpty]],
       description: ['', Validators.required],
       stock: ['', Validators.required],
     })
@@ -34,4 +34,17 @@ export class ProductFormComponent implements OnInit {
     this.formClose.emit();
   }
 
+  /**
+   * Function that validates that a control has no empty white-spaced values
+   * @param control
+   */
+  validateNotEmpty = function (control: AbstractControl) {
+    const value = control.value;
+
+    if (value === null || value.trim().length === 0)
+      return {
+        validateNotEmpty: true
+      }
+    else return null;
+  }
 }

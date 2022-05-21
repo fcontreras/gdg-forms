@@ -15,8 +15,8 @@
 
   <clr-input-container>
     <label>Stock</label>
-    <input clrInput formControlName="stock" type="number"/>
-    <clr-control-error>Debes especificar el stock del producto</clr-control-error>
+    <input clrInput formControlName="stock" type="number" min="0" max="9999999"/>
+    <clr-control-error>Debes especificar el stock del producto mayor o igual a cero</clr-control-error>
   </clr-input-container>
 
   <button class="btn btn-primary" type="submit">Enviar</button>
